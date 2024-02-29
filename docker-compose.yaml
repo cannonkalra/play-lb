@@ -11,14 +11,15 @@ services:
       - ./traefik.yml:/etc/traefik/traefik.yml
       - ./dynamic:/etc/traefik/dynamic:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-
+    depends_on:
+    - whoami
+    - web-1
+    - web-2
 
   whoami:
     image: traefik/whoami
     ports:
       - 8083:80
-    labels:
-      - traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)
 
   web-1:
     image: nginx:1.25-alpine
