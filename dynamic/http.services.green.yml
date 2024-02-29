@@ -1,6 +1,6 @@
 http:
   services:
-    green:
+    whoami:
       loadBalancer:
         servers:
-          - url: "http://green/"
+          - url: "http://whoami/"

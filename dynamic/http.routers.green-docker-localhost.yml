@@ -2,4 +2,4 @@ http:
   routers:
     green-docker-localhost:
       rule: Host(`green.docker.localhost`)
-      service: green@file
+      service: whoami@file
