@@ -5,6 +5,7 @@ entryPoints:
     address: ":443"
 
 providers:
+  docker: {}
   file:
     directory: /etc/traefik/dynamic
     watch: true
