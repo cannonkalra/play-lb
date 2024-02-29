@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  web-1:
+    image: nginx:1.25-alpine
+    platform: linux/amd64
+    ports:
+      - "8081:80"
+    configs:
+    - source: green.html
+      target: /usr/share/nginx/html/index.html
+  web-2:
+    image: nginx:1.25-alpine
+    platform: linux/amd64
+    ports:
+      - "8082:80"
+    configs:
+      - source: blue.html
+        target: /usr/share/nginx/html/index.html
+
+
+configs:
+  green.html:
+    content: |
+      hello world from green
+  blue.html:
+    content: |
+      hello world from blue
