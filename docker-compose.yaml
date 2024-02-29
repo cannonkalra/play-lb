@@ -10,3 +10,13 @@ services:
     volumes:
       - ./traefik.yml:/etc/traefik/traefik.yml
       - ./dynamic:/etc/traefik/dynamic:ro
+
+  blue:
+    image: blue
+    ports:
+      - 8081:80
+
+  green:
+    image: green
+    ports:
+      - 8082:80
