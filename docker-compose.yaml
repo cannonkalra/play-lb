@@ -11,12 +11,32 @@ services:
       - ./traefik.yml:/etc/traefik/traefik.yml
       - ./dynamic:/etc/traefik/dynamic:ro
 
-  blue:
-    image: blue
-    ports:
-      - 8081:80
-
   whoami:
     image: traefik/whoami
     ports:
-      - 8082:80
+      - 8083:80
+
+  web-1:
+    image: nginx:1.25-alpine
+    ports:
+      - "8081:80"
+    configs:
+    - source: web-1.html
+      target: /usr/share/nginx/html/index.html
+
+  web-2:
+    image: nginx:1.25-alpine
+    ports:
+      - "8082:80"
+    configs:
+      - source: web-2.html
+        target: /usr/share/nginx/html/index.html
+
+
+configs:
+  web-1.html:
+    content: |
+      <h2>Blue</h2>
+  web-2.html:
+    content: |
+      <h2>Green</h2>

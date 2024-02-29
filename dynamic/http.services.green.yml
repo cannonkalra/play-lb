@@ -1,6 +1,0 @@
-http:
-  services:
-    whoami:
-      loadBalancer:
-        servers:
-          - url: "http://whoami/"

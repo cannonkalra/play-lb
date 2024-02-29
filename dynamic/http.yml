@@ -1,0 +1,31 @@
+http:
+  routers:
+    docker-localhost:
+      rule: Host(`docker.localhost`)
+      service: blue@file
+
+    blue-docker-localhost:
+      rule: Host(`blue.docker.localhost`)
+      service: blue@file
+
+    green-docker-localhost:
+      rule: Host(`green.docker.localhost`)
+      service: green@file
+
+    # whoami-docker-localhost:
+    #   rule: Host(`whoami.docker.localhost`)
+    #   service: whoami@file
+
+  services:
+    whoami:
+      loadBalancer:
+        servers:
+          - url: "http://whoami/"
+    green:
+      loadBalancer:
+        servers:
+          - url: "http://web-2/"
+    blue:
+      loadBalancer:
+        servers:
+          - url: "http://web-1/"
